@@ -14,7 +14,7 @@ import './body.html';
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('tasks');
-  // Meteor.subscribe('simpleTasks');
+  Meteor.subscribe('SimpleTasks');
 });
 
 Template.body.helpers({
@@ -30,8 +30,8 @@ Template.body.helpers({
   incompleteCount() {
     return Tasks.find({ checked: { $ne: true } }).count();
   },
-  SimpleTasks() {
-    return SimpleTasks;
+  simpleTasks() {
+    return SimpleTasks.find({});
   }
 });
 
@@ -52,5 +52,5 @@ Template.body.events({
   },
   'change .hide-completed input'(event, instance) {
     instance.state.set('hideCompleted', event.target.checked);
-  },
+  }
 });

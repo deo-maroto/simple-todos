@@ -22,3 +22,8 @@ Schemas.SimpleTask = new SimpleSchema({
 
 // Attach...
 SimpleTasks.attachSchema(Schemas.SimpleTask);
+SimpleTasks.allow({
+  insert: function(){
+    return true;
+  }
+})
