@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 // As with other collections
-export const SimpleTasks = new Mongo.Collection('simpleTasks');
+export let SimpleTasks = new Mongo.Collection('simpleTasks');
 
 let Schemas = {};
 
@@ -22,6 +22,7 @@ Schemas.SimpleTask = new SimpleSchema({
 
 // Attach...
 SimpleTasks.attachSchema(Schemas.SimpleTask);
+// ... and allow insert operations
 SimpleTasks.allow({
   insert: function(){
     return true;

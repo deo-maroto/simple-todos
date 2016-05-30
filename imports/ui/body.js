@@ -14,7 +14,7 @@ import './body.html';
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('tasks');
-  Meteor.subscribe('SimpleTasks');
+  Meteor.subscribe('simpleTasks');
 });
 
 Template.body.helpers({
@@ -31,7 +31,7 @@ Template.body.helpers({
     return Tasks.find({ checked: { $ne: true } }).count();
   },
   simpleTasks() {
-    return SimpleTasks.find({});
+    return SimpleTasks.find();
   }
 });
 
