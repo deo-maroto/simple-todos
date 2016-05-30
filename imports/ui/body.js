@@ -4,12 +4,17 @@ import { ReactiveDict } from 'meteor/reactive-dict';
 
 import { Tasks } from '../api/tasks.js';
 
+// import and add to Window scope
+import { SimpleTasks } from '../api/simple-tasks.js';
+window.SimpleTasks = SimpleTasks;
+
 import './task.js';
 import './body.html';
 
 Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('tasks');
+  // Meteor.subscribe('simpleTasks');
 });
 
 Template.body.helpers({
@@ -25,6 +30,9 @@ Template.body.helpers({
   incompleteCount() {
     return Tasks.find({ checked: { $ne: true } }).count();
   },
+  SimpleTasks() {
+    return SimpleTasks;
+  }
 });
 
 Template.body.events({
