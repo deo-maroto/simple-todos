@@ -11,17 +11,13 @@
       {{> loginButtons}}
 
       {{#if currentUser}}
-        <!-- <form class="new-task">
-          <input type="text" name="text" placeholder="Type to add new tasks" />
-        </form> -->
-
         {{> quickForm collection="SimpleTasks" id="SimpleForm" type="insert"}}
       {{/if}}
     </header>
 
     <ul>
       {{#each simpleTasks}}
-        <li>{{name}}</li>
+        <li>{{name}} - {{details}}</li>
       {{/each}}
     </ul>
   </div>

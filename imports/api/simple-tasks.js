@@ -3,7 +3,13 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 // As with other collections
-export let SimpleTasks = new Mongo.Collection('simpleTasks');
+export const SimpleTasks = new Mongo.Collection('simpleTasks');
+
+if(Meteor.isServer){
+  Meteor.publish('simpleTasks', function simpleTasksPublication(){
+    return SimpleTasks.find();
+  })
+}
 
 let Schemas = {};
 
