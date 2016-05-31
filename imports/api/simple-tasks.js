@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 import { check } from 'meteor/check';
 
 // As with other collections
-export const SimpleTasks = new Mongo.Collection('simpleTasks');
+const SimpleTasks = new Mongo.Collection('simpleTasks');
 
 if(Meteor.isServer){
   Meteor.publish('simpleTasks', function simpleTasksPublication(){
@@ -33,4 +33,7 @@ SimpleTasks.allow({
   insert: function(){
     return true;
   }
-})
+});
+
+// export to be used in our ui
+export default SimpleTasks;
